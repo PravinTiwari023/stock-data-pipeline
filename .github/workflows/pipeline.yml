@@ -1,0 +1,14 @@
+name: Deploy Pipeline  
+on:  
+  push:  
+    branches: [main]  
+jobs:  
+  deploy:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - uses: actions/checkout@v4  
+      - name: Deploy to Cloud Functions  
+        run: |  
+          gcloud functions deploy stock-pipeline --runtime python310 --trigger-http  
+        env:  
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCS_KEY }}  
