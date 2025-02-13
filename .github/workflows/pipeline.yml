@@ -11,7 +11,9 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1  
         with:  
           service_account_key: ${{ secrets.GCS_KEY }}  
-          project_id: python-stock-data-pipeline
+          project_id: python-stock-data-pipeline  
+      - name: Check gcloud authentication  
+        run: gcloud auth list  
       - name: Deploy to Cloud Functions  
         run: |  
           gcloud functions deploy stock-pipeline --runtime python310 --trigger-http  
