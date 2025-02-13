@@ -1,0 +1,5 @@
+yfinance
+pandas
+prefect
+great-expectations 
+google-cloud-storage  
