@@ -25,7 +25,7 @@ logger = logging.getLogger("stock_pipeline")
 REQUIRED_ENV_VARS = {
     "GCP_CREDENTIALS": "GCP service account credentials",
     "GCS_BUCKET_NAME": "Target GCS bucket name",
-    "SLACK_WEBHOOK_URL": "Slack alert webhook (optional)"
+    # "SLACK_WEBHOOK_URL": "Slack alert webhook (optional)"
 }
 
 def validate_environment():
@@ -36,10 +36,10 @@ def validate_environment():
             f"Missing required environment variables: {', '.join(missing)}"
         )
 
-def send_alert(message: str):
-    """Send incident notification to Slack"""
-    # Implement your alert mechanism (Slack, Email, PagerDuty)
-    pass
+# def send_alert(message: str):
+#     """Send incident notification to Slack"""
+#     # Implement your alert mechanism (Slack, Email, PagerDuty)
+#     pass
 
 @flow(
     name="Stock Pipeline",
