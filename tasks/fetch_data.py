@@ -5,6 +5,7 @@ from datetime import datetime
 
 @task
 def fetch_data():
+    print("Data vaaalidation vjdwvbiwqudioqs    ")
     # Define start and end dates
     start_date = "2005-01-01"
     end_date = pd.Timestamp.today().strftime('%Y-%m-%d')
