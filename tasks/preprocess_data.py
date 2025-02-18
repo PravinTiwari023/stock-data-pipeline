@@ -25,5 +25,5 @@ def preprocess_data(df):
     # - Handle any NaN or infinite values if they exist
     df.replace([np.inf, -np.inf], np.nan, inplace=True)  # Replace infinite values with NaN
     df.dropna(inplace=True)  # Drop rows with NaN values, or you could fill them if that's more appropriate
-    
+
     return df

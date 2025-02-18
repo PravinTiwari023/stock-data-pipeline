@@ -27,7 +27,7 @@ def validate_data(data):
         gx.expectations.ExpectColumnValuesToBeBetween(column="Open", min_value=0),
         gx.expectations.ExpectColumnValuesToNotBeNull(column="Date"),
         gx.expectations.ExpectColumnValuesToBeOfType(column="Date", type_="datetime64[ns]"),
-        gx.expectations.ExpectColumnValuesToBeUnique(column="Stock_Ticker")
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="Stock_Ticker")
     ]
 
     # Validate each expectation

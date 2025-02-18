@@ -2,8 +2,6 @@ from prefect import task
 import pandas as pd
 from google.cloud import storage
 import tempfile
-# import os
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\pc\Desktop\Automation Tutorial\Python GCP APACHE Airflow\Data Pipeline\stock-data-pipeline\Keys\python-stock-data-pipeline-bdf682d3a54e.json"
 
 @task
 def store_gcs(cleaned_data):
