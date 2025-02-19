@@ -79,6 +79,7 @@ python pipeline.py
 ├── tasks/                  # Prefect tasks
 │   ├── fetch_data.py
 │   ├── validate_data.py
+|   ├── preprocess_data.py
 │   ├── clean_data.py
 │   └── store_gcs.py
 ├── pipeline.py             # Main workflow
