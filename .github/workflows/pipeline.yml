@@ -35,4 +35,4 @@ jobs:
           echo "$GCP_CREDENTIALS" > ~/.config/gcloud/application_default_credentials.json
 
       - name: Run Pipeline
-        run: python pipeline_main.py
+        run: python pipeline_repeat.py
