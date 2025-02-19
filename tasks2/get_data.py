@@ -48,6 +48,10 @@ def get_data():
     for df, ticker in dataframes:
         df.columns = ['Close', 'High', 'Low', 'Open', 'Volume']
         df = df.reset_index()
+        
+        # Change the format of 'Date' column to 'YYYY-MM-DD'
+        df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
+        
         df['Stock_Ticker'] = ticker
         processed_dfs.append(df)
     
