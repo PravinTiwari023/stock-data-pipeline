@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    # Runs at 00:00 UTC every day
-    - cron: "0 0 * * *"
+    # Runs at 00:00 UTC on the 1st of every month
+    - cron: "0 0 1 * *"
 
 jobs:
   run-pipeline:
@@ -35,4 +35,4 @@ jobs:
           echo "$GCP_CREDENTIALS" > ~/.config/gcloud/application_default_credentials.json
 
       - name: Run Pipeline
-        run: python pipeline_repeat.py
+        run: python pipeline_main.py
