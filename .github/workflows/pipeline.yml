@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    # Runs at 00:00 UTC on the 1st of every month
     - cron: "0 0 1 * *"
 
 jobs:
@@ -36,3 +35,10 @@ jobs:
 
       - name: Run Pipeline
         run: python pipeline_repeat.py
+
+      - name: Check Data Format Before Upload
+        run: |
+          python -c "import pandas as pd; df = pd.read_csv('path/to/your/intermediate_file.csv'); print(df['Date'].dtype); print(df['Date'].head())"
+
+      - name: Upload to GCS
+        run: python -c "from pipeline_repeat import update_gcs; update_gcs(pd.read_csv('path/to/your/intermediate_file.csv'))"

@@ -68,6 +68,4 @@ def get_data():
     # Concatenate all dataframes into a single dataframe
     combined_df = pd.concat(processed_dfs, ignore_index=True)
 
-    combined_df['Date'] = pd.to_datetime(combined_df['Date']).dt.strftime('%Y-%m-%d')
-
     return combined_df

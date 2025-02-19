@@ -1,4 +1,5 @@
 from prefect import flow
+import pandas as pd
 from tasks2.get_data import get_data
 from tasks.validate_data import validate_data
 from tasks.preprocess_data import preprocess_data
@@ -34,6 +35,9 @@ def stock_pipeline():
     # 3. Clean data
     # Note: You might want to adjust this based on what 'clean_data' does vs. 'preprocess_data'
     cleaned_data = clean_data(processed_dfs)
+
+    # Before storing to GCS, format the date:
+    cleaned_data['Date'] = pd.to_datetime(cleaned_data['Date']).dt.strftime('%Y-%m-%d')
     
     # 4. Store in GCS
     update_gcs(cleaned_data)
