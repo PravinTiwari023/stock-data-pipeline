@@ -7,7 +7,8 @@ import pandas as pd
 def fetch_data():
     # Define start and end dates
     start_date = "2000-01-01"
-    end_date = pd.Timestamp.today().strftime('%Y-%m-%d')
+    # end_date = pd.Timestamp.today().strftime('%Y-%m-%d')
+    end_date = "2000-01-01"
 
     # List of stock tickers for India's top 50 companies
     tickers = [
