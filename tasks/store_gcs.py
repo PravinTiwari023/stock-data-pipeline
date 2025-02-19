@@ -12,5 +12,5 @@ def store_gcs(cleaned_data):
     # Upload to GCS
     client = storage.Client()
     bucket = client.get_bucket("stock-dat-bucket-1001")
-    blob = bucket.blob(f"stock_data_{pd.Timestamp.now()}.csv")
+    blob = bucket.blob("stock_data.csv")
     blob.upload_from_filename(tmp.name)
