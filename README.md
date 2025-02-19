@@ -89,11 +89,12 @@ python pipeline.py
 ---
 
 ## Tools Used
-- **Orchestration**: Prefect
-- **Data Fetching**: yfinance
-- **Validation**: Great Expectations
-- **Storage**: Google Cloud Storage
-- **Automation**: GitHub Actions
+- Orchestration: Prefect
+- Data Fetching: yfinance
+- Validation: Great Expectations
+- Preprocessing: Pandas
+- Storage: Google Cloud Storage
+- Automation: GitHub Actions
 
 ---
 
