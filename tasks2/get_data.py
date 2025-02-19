@@ -34,36 +34,38 @@ def get_data():
     # Download data for each ticker
     stock_data = {}
     for ticker in tickers:
-        try:
-            df = yf.download(ticker, start=start_date, end=end_date)
-            stock_data[ticker] = df
-        except Exception as e:
-            print(f"Error downloading data for {ticker}: {e}")
-            continue  # Skip to the next ticker if there's an error
+        df = yf.download(ticker, start=start_date, end=end_date)
+        stock_data[ticker] = df
 
-    # Process the data as before
-    dataframes = [(stock_data[ticker], ticker) for ticker in tickers if ticker in stock_data]
+    # Create list of tuples with ticker and dataframe
+    dataframes = [(stock_data[ticker], ticker) for ticker in [
+        "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "ICICIBANK.NS", "INFY.NS",
+        "HINDUNILVR.NS", "ITC.NS", "SBIN.NS", "BHARTIARTL.NS", "BAJFINANCE.NS",
+        "KOTAKBANK.NS", "HCLTECH.NS", "ASIANPAINT.NS", "LT.NS", "AXISBANK.NS",
+        "MARUTI.NS", "SUNPHARMA.NS", "TITAN.NS", "ULTRACEMCO.NS", "WIPRO.NS",
+        "NESTLEIND.NS", "M&M.NS", "TECHM.NS", "POWERGRID.NS", "TATAMOTORS.NS",
+        "INDUSINDBK.NS", "SBILIFE.NS", "DIVISLAB.NS", "BAJAJFINSV.NS", "ADANIPORTS.NS",
+        "HDFCLIFE.NS", "GRASIM.NS", "ONGC.NS", "COALINDIA.NS", "JSWSTEEL.NS",
+        "DRREDDY.NS", "BRITANNIA.NS", "CIPLA.NS", "SHREECEM.NS", "HEROMOTOCO.NS",
+        "BPCL.NS", "EICHERMOT.NS", "TATACONSUM.NS", "ADANIENT.NS",
+        "HINDALCO.NS", "IOC.NS", "BAJAJ-AUTO.NS", "APOLLOHOSP.NS", "TATASTEEL.NS"
+    ]]
     
+    # Process each dataframe
     processed_dfs = []
     for df, ticker in dataframes:
+        # Rename columns
         df.columns = ['Close', 'High', 'Low', 'Open', 'Volume']
+        
+        # Reset index
         df = df.reset_index()
         
-        # Ensure 'Date' is in datetime format before conversion
-        df['Date'] = pd.to_datetime(df['Date'])
-        
-        # Change the format of 'Date' column to 'YYYY-MM-DD'
-        df['Date'] = df['Date'].dt.strftime('%Y-%m-%d')
-        
-        # Verify the change
-        print(df['Date'].head())  # This will print the first few dates for debugging
-
+        # Add stock ticker column
         df['Stock_Ticker'] = ticker
+        
         processed_dfs.append(df)
     
+    # Concatenate all dataframes into a single dataframe
     combined_df = pd.concat(processed_dfs, ignore_index=True)
-
-    # Check the final format after concatenation
-    print(combined_df['Date'].head())  # Debug to see if format persists after concat
 
     return combined_df

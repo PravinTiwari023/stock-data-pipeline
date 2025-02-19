@@ -5,7 +5,7 @@ from tasks.preprocess_data import preprocess_data
 from tasks.clean_data import clean_data
 from tasks.store_gcs import store_gcs
 
-@flow(name="Stock Pipeline")
+@flow(name="Stock Pipeline Main")
 def stock_pipeline():
     # 1. Fetch data
     processed_dfs = fetch_data()  # Rename from raw_data to processed_dfs
