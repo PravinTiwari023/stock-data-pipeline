@@ -49,12 +49,21 @@ def get_data():
         df.columns = ['Close', 'High', 'Low', 'Open', 'Volume']
         df = df.reset_index()
         
-        # Change the format of 'Date' column to 'YYYY-MM-DD'
-        df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
+        # Ensure 'Date' is in datetime format before conversion
+        df['Date'] = pd.to_datetime(df['Date'])
         
+        # Change the format of 'Date' column to 'YYYY-MM-DD'
+        df['Date'] = df['Date'].dt.strftime('%Y-%m-%d')
+        
+        # Verify the change
+        print(df['Date'].head())  # This will print the first few dates for debugging
+
         df['Stock_Ticker'] = ticker
         processed_dfs.append(df)
     
     combined_df = pd.concat(processed_dfs, ignore_index=True)
+
+    # Check the final format after concatenation
+    print(combined_df['Date'].head())  # Debug to see if format persists after concat
 
     return combined_df
