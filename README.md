@@ -79,6 +79,7 @@ python pipeline.py
 ├── tasks/                  # Prefect tasks
 │   ├── fetch_data.py
 │   ├── validate_data.py
+|   ├── preprocess_data.py
 │   ├── clean_data.py
 │   └── store_gcs.py
 ├── pipeline.py             # Main workflow
@@ -89,11 +90,12 @@ python pipeline.py
 ---
 
 ## Tools Used
-- **Orchestration**: Prefect
-- **Data Fetching**: yfinance
-- **Validation**: Great Expectations
-- **Storage**: Google Cloud Storage
-- **Automation**: GitHub Actions
+- Orchestration: Prefect
+- Data Fetching: yfinance
+- Validation: Great Expectations
+- Preprocessing: Pandas
+- Storage: Google Cloud Storage
+- Automation: GitHub Actions
 
 ---
 
